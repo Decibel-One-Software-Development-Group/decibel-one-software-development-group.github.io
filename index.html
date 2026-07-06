@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decibel One — software for production sound &amp; live events</title>
+<meta name="description" content="Decibel One builds focused, native macOS and Windows apps for production sound and live events — time sync for closed networks, audio test and generation, equipment documentation, rack drawing, and show scheduling. Each app does one job precisely, and better together.">
+<meta name="theme-color" content="#0e9f6e">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0c0e'/%3E%3Crect x='22' y='52' width='15' height='32' rx='3' fill='%2337AA00'/%3E%3Crect x='43' y='36' width='15' height='48' rx='3' fill='%23FFD400'/%3E%3Crect x='64' y='22' width='15' height='62' rx='3' fill='%23D51400'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Decibel One — software for production sound &amp; live events">
+<meta property="og:description" content="Focused, native macOS &amp; Windows apps for production sound and live events. Time sync for closed networks, audio test &amp; generation, equipment documentation, rack drawing, and scheduling.">
+<meta property="og:url" content="https://decibel-one-software-development-group.github.io/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css">
+<style>
+:root{
+  --bg:#fbfbfa; --surface:#ffffff; --tint:#f3f5f4; --text:#181a19; --muted:#636966; --faint:#8d938f;
+  --border:#e5e8e6; --accent:#0e9f6e; --accent-h:#0b855d; --accent-bg:#e6f5ee; --accent-border:#b6e2ce;
+  --success:#1f8a4c; --success-bg:#e6f4ec; --warn:#b5761e;
+  --shadow:0 1px 2px rgba(0,0,0,.04),0 6px 20px rgba(0,0,0,.05);
+  --shadow-h:0 2px 6px rgba(0,0,0,.06),0 14px 32px rgba(0,0,0,.09);
+  --radius:12px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#15171a; --surface:#1e2125; --tint:#191c20; --text:#eceded; --muted:#a4a9ad; --faint:#727880;
+    --border:#2b2f34; --accent:#33c78e; --accent-h:#54d5a2; --accent-bg:#132b22; --accent-border:#2c5442;
+    --success:#54c98a; --success-bg:#16301f; --warn:#d19a45;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 22px rgba(0,0,0,.35);
+    --shadow-h:0 2px 8px rgba(0,0,0,.4),0 16px 36px rgba(0,0,0,.5);
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',system-ui,-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:34px 24px 64px}
+a{color:var(--accent);text-decoration:none}
+h1{font-size:36px;font-weight:600;line-height:1.16;letter-spacing:-.015em;margin:0 0 14px;text-wrap:balance}
+h2{font-size:17px;font-weight:600;margin:0}
+p{margin:0}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.brand{display:flex;align-items:center;gap:12px}
+.brandmark{height:44px;width:auto;display:block;border-radius:8px}
+.brand .name{font-size:18px;font-weight:600;line-height:1.15}
+.brand .sub{font-size:13px;color:var(--faint)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;padding:5px 11px;border-radius:999px;background:var(--accent-bg);color:var(--accent)}
+.hero{text-align:center;padding:2.5rem 0 1.5rem}
+.hero p.lede{max-width:760px;margin:0 auto 24px;font-size:16.5px;line-height:1.6;color:var(--muted);text-wrap:pretty}
+.dl{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:#fff;font-size:16px;font-weight:500;padding:13px 26px;border-radius:10px;box-shadow:var(--shadow);transition:background .15s,transform .15s}
+.dl:hover{background:var(--accent-h);transform:translateY(-1px)}
+.cap{margin-top:14px;font-size:13px;color:var(--faint)}
+.win{background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;margin:0 0 1.5rem}
+.win .bar{display:flex;align-items:center;gap:7px;padding:11px 15px;border-bottom:1px solid var(--border)}
+.dot{width:11px;height:11px;border-radius:50%}
+.win.meterwin .body{padding:16px 16px 14px}
+.sec-title{text-align:center;font-size:23px;font-weight:600;letter-spacing:-.01em;margin:2.9rem 0 .4rem}
+.sec-sub{text-align:center;font-size:14.5px;color:var(--muted);max-width:680px;margin:0 auto 1.6rem;text-wrap:pretty}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px;align-items:stretch}
+.card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:19px 20px;box-shadow:var(--shadow)}
+.card.prod{transition:transform .15s,box-shadow .15s,border-color .15s;color:inherit}
+a.card.prod:hover{transform:translateY(-2px);box-shadow:var(--shadow-h);border-color:var(--accent-border)}
+.chead{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
+.card .ic{font-size:25px;color:var(--accent);line-height:1}
+.card h2{margin:12px 0 5px;font-size:16px}
+.card p{font-size:14px;color:var(--muted);line-height:1.55}
+.card .more{margin-top:auto;padding-top:14px;font-size:13.5px;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:5px}
+.card .more i{font-size:15px;transition:transform .15s}
+a.card.prod:hover .more i{transform:translateX(3px)}
+.card.soon{background:var(--tint);box-shadow:none}
+.card.soon .ic{color:var(--faint)}
+.card.soon h2{color:var(--text)}
+.tag{font-size:11px;font-weight:500;padding:2px 9px;border-radius:999px;background:var(--accent-bg);color:var(--accent);white-space:nowrap}
+.tag.soon{background:transparent;color:var(--faint);border:1px solid var(--border)}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:14px}
+.why-i{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+.why-i i{font-size:22px;color:var(--accent);line-height:1}
+.why-i h3{margin:10px 0 5px;font-size:15px;font-weight:600}
+.why-i p{font-size:13.5px;color:var(--muted);line-height:1.55}
+footer{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--border);text-align:center;font-size:13px;color:var(--faint)}
+.d1sig{display:inline-flex;align-items:center;gap:.55rem;margin-bottom:.55rem}
+.d1sig .d1name{font-weight:600;font-size:15px;color:var(--text);letter-spacing:.2px}
+.d1sig .d1mark{display:block}
+.foot-tag{color:var(--muted);margin-bottom:.35rem}
+html{scroll-behavior:smooth}
+.meter{width:100%;height:auto;display:block}
+@media(max-width:560px){h1{font-size:29px}.hero{padding:1.5rem 0 1rem}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <svg class="brandmark" viewBox="0 0 428 819" role="img" aria-label="Decibel One">
+        <defs><clipPath id="d1topone"><path d="M93,92 L191,92 L258,168 L258,748 L172,748 L172,170 L73,170 Z"/></clipPath></defs>
+        <path fill="#000000" d="M12,6 L341,6 A80,80 0 0 1 421,86 L421,728 A82,82 0 0 1 339,810 L12,810 A6,6 0 0 1 6,804 L6,12 A6,6 0 0 1 12,6 Z"/>
+        <g clip-path="url(#d1topone)">
+          <rect x="58" y="94"  width="212" height="34" fill="#D51400"/>
+          <rect x="58" y="140" width="212" height="29" fill="#FFFF00"/>
+          <rect x="58" y="177" width="212" height="29" fill="#FFFF00"/>
+          <rect x="58" y="214" width="212" height="29" fill="#FFFF00"/>
+          <rect x="58" y="251" width="212" height="29" fill="#37AA00"/>
+          <rect x="58" y="288" width="212" height="29" fill="#37AA00"/>
+          <rect x="58" y="325" width="212" height="29" fill="#37AA00"/>
+          <rect x="58" y="362" width="212" height="29" fill="#37AA00"/>
+          <rect x="58" y="399" width="212" height="29" fill="#37AA00"/>
+          <rect x="58" y="436" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="473" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="510" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="547" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="584" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="621" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="658" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="695" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="732" width="212" height="29" fill="#2A8800"/>
+        </g>
+      </svg>
+      <span><span class="name">Decibel One</span><br><span class="sub">Production sound software</span></span>
+    </div>
+    <span class="pill"><i class="ti ti-adjustments" aria-hidden="true"></i> Native for macOS &amp; Windows</span>
+  </div>
+
+  <section class="hero">
+    <h1>Purpose-built software for live production</h1>
+    <p class="lede">Decibel One makes focused, native apps for production sound and live events. Lock every machine on a closed network to one clock, test and generate audio, document your gear, draw your racks, and schedule the whole show — each app doing one thing precisely, and better together.</p>
+    <a class="dl" href="#suite">
+      See the apps
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg>
+    </a>
+    <p class="cap">Native macOS &amp; Windows apps · signed, notarized &amp; auto-updating</p>
+  </section>
+
+  <div class="win meterwin">
+    <div class="bar">
+      <span class="dot" style="background:#D51400"></span>
+      <span class="dot" style="background:#FFB020"></span>
+      <span class="dot" style="background:#37AA00"></span>
+      <span style="margin-left:8px;font-size:13px;color:var(--faint);font-family:'IBM Plex Mono',monospace">Decibel One · master</span>
+    </div>
+    <div class="body">
+      <!-- An animated dB level meter — the mark the company is named for. Pure
+           cosmetic decoration built by the script below; nothing leaves the page. -->
+      <svg id="meter" class="meter" viewBox="0 0 860 340" preserveAspectRatio="xMidYMid meet" role="img" aria-label="An animated audio level meter"></svg>
+    </div>
+  </div>
+
+  <h2 class="sec-title" id="suite">The Decibel One suite</h2>
+  <p class="sec-sub">Focused apps that stand on their own — and connect into one system when you run more than one.</p>
+  <div class="grid">
+
+    <a class="card prod" href="https://decibel-one-software-development-group.github.io/sichronize-server/">
+      <div class="chead"><i class="ti ti-clock ic" aria-hidden="true"></i><span class="tag">Free · macOS</span></div>
+      <h2>SiChronize Server</h2>
+      <p>Turn one Mac into the NTP time source for a closed or air-gapped network, so every device agrees on the clock — no internet needed.</p>
+      <span class="more">Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+    </a>
+
+    <a class="card prod" href="https://decibel-one-software-development-group.github.io/sichronize-server/#connect">
+      <div class="chead"><i class="ti ti-plug-connected ic" aria-hidden="true"></i><span class="tag">Free · Mac &amp; PC</span></div>
+      <h2>SiChronize Connect</h2>
+      <p>A one-time setup utility: run it once on any Mac or Windows PC and it keeps that machine locked to your time server, at boot and every 30 minutes.</p>
+      <span class="more">Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+    </a>
+
+    <a class="card prod" href="https://decibel-one-software-development-group.github.io/sigentest/">
+      <div class="chead"><i class="ti ti-wave-sine ic" aria-hidden="true"></i><span class="tag">macOS</span></div>
+      <h2>SiGENTEST</h2>
+      <p>Native audio test and signal generation for macOS — tones, sweeps, and measurement to check out a system quickly and precisely.</p>
+      <span class="more">Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+    </a>
+
+    <div class="card prod soon">
+      <div class="chead"><i class="ti ti-database ic" aria-hidden="true"></i><span class="tag soon">Coming soon</span></div>
+      <h2>SiBase</h2>
+      <p>Production sound documentation and equipment management — the single source of truth for every piece of gear across your shows.</p>
+    </div>
+
+    <div class="card prod soon">
+      <div class="chead"><i class="ti ti-calendar-event ic" aria-hidden="true"></i><span class="tag soon">Coming soon</span></div>
+      <h2>SiCal</h2>
+      <p>Project scheduling built for live entertainment — plan crews, dates, and deliverables across every production in one calendar.</p>
+    </div>
+
+    <div class="card prod soon">
+      <div class="chead"><i class="ti ti-server-2 ic" aria-hidden="true"></i><span class="tag soon">Coming soon</span></div>
+      <h2>SiAOX</h2>
+      <p>Rack-elevation drawings wired straight to your equipment list — draw the rig, and it stays in step with what's actually in it.</p>
+    </div>
+
+  </div>
+
+  <h2 class="sec-title">Why Decibel One</h2>
+  <p class="sec-sub">Software shaped by the way live production actually works.</p>
+  <div class="why">
+    <div class="why-i"><i class="ti ti-bolt" aria-hidden="true"></i><h3>Native &amp; fast</h3><p>Real macOS and Windows apps that feel at home on your system — no browser tabs, no heavy runtimes, just software that opens and works.</p></div>
+    <div class="why-i"><i class="ti ti-wifi-off" aria-hidden="true"></i><h3>Built for the field</h3><p>Designed for closed and air-gapped networks and live environments, where the internet isn't a given and the show still has to go on.</p></div>
+    <div class="why-i"><i class="ti ti-affiliate" aria-hidden="true"></i><h3>Better together</h3><p>Each app does one job precisely. Run more than one and they connect — a shared login and one source of truth across the suite.</p></div>
+    <div class="why-i"><i class="ti ti-shield-check" aria-hidden="true"></i><h3>Signed &amp; current</h3><p>Signed, notarized, and auto-updating, so you always have the latest without hunting for a download.</p></div>
+  </div>
+
+  <footer>
+    <div class="d1sig">
+      <svg class="d1mark" viewBox="0 0 428 819" width="19" height="36" role="img" aria-label="Decibel One logo">
+        <defs><clipPath id="d1footone"><path d="M93,92 L191,92 L258,168 L258,748 L172,748 L172,170 L73,170 Z"/></clipPath></defs>
+        <path fill="#000000" d="M12,6 L341,6 A80,80 0 0 1 421,86 L421,728 A82,82 0 0 1 339,810 L12,810 A6,6 0 0 1 6,804 L6,12 A6,6 0 0 1 12,6 Z"/>
+        <g clip-path="url(#d1footone)">
+          <rect x="58" y="94"  width="212" height="34" fill="#D51400"/>
+          <rect x="58" y="140" width="212" height="29" fill="#FFFF00"/>
+          <rect x="58" y="177" width="212" height="29" fill="#FFFF00"/>
+          <rect x="58" y="214" width="212" height="29" fill="#FFFF00"/>
+          <rect x="58" y="251" width="212" height="29" fill="#37AA00"/>
+          <rect x="58" y="288" width="212" height="29" fill="#37AA00"/>
+          <rect x="58" y="325" width="212" height="29" fill="#37AA00"/>
+          <rect x="58" y="362" width="212" height="29" fill="#37AA00"/>
+          <rect x="58" y="399" width="212" height="29" fill="#37AA00"/>
+          <rect x="58" y="436" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="473" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="510" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="547" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="584" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="621" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="658" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="695" width="212" height="29" fill="#2A8800"/>
+          <rect x="58" y="732" width="212" height="29" fill="#2A8800"/>
+        </g>
+      </svg>
+      <span class="d1name">Decibel One</span>
+    </div>
+    <div class="foot-tag">Software for production sound &amp; live events.</div>
+    <div>© 2026 Decibel One</div>
+  </footer>
+</main>
+
+<script>
+// Animated dB level meter — the mark the company is named for. Purely cosmetic.
+(function(){
+  var svg=document.getElementById('meter');
+  if(!svg) return;
+  var NS='http://www.w3.org/2000/svg';
+  var W=860,H=340,padL=66,padR=22,padT=30,padB=46;
+  var x0=padL,x1=W-padR,yTop=padT,yBot=H-padB,mH=yBot-yTop;
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+
+  var defs=el('defs',{});
+  var grad=el('linearGradient',{id:'d1mg',gradientUnits:'userSpaceOnUse',x1:0,y1:yBot,x2:0,y2:yTop});
+  [['0','#2A8800'],['0.45','#37AA00'],['0.68','#FFD400'],['0.85','#FF8A00'],['1','#D51400']]
+    .forEach(function(s){grad.appendChild(el('stop',{offset:s[0],'stop-color':s[1]}));});
+  defs.appendChild(grad); svg.appendChild(defs);
+
+  svg.appendChild(el('rect',{x:8,y:8,width:W-16,height:H-16,rx:14,fill:'#0a0c0e',stroke:'rgba(255,255,255,.08)'}));
+
+  var ticks=[['0',1.0],['-6',0.80],['-12',0.63],['-20',0.46],['-40',0.20]];
+  ticks.forEach(function(t){
+    var y=yBot-t[1]*mH;
+    svg.appendChild(el('line',{x1:x0-6,y1:y,x2:x1,y2:y,stroke:'rgba(255,255,255,.10)','stroke-width':1}));
+    var tx=el('text',{x:x0-12,y:y+3.5,'text-anchor':'end','font-size':11,fill:'rgba(255,255,255,.34)','font-family':"'IBM Plex Mono',monospace"});
+    tx.textContent=t[0]; svg.appendChild(tx);
+  });
+  var cap=el('text',{x:x0-12,y:yTop-9,'text-anchor':'end','font-size':10,fill:'rgba(255,255,255,.30)','font-family':"'IBM Plex Mono',monospace",'letter-spacing':1});
+  cap.textContent='dB'; svg.appendChild(cap);
+
+  var N=18, gap=(x1-x0)/N, bw=gap*0.56, bars=[];
+  for(var i=0;i<N;i++){
+    var bx=x0+i*gap+(gap-bw)/2;
+    svg.appendChild(el('rect',{x:bx,y:yTop,width:bw,height:mH,rx:2,fill:'rgba(255,255,255,.05)'}));
+    var lvl=el('rect',{x:bx,y:yBot,width:bw,height:1,rx:2,fill:'url(#d1mg)'});
+    svg.appendChild(lvl);
+    var pk=el('rect',{x:bx,y:yBot-3,width:bw,height:3,rx:1.5,fill:'rgba(236,239,241,.9)'});
+    svg.appendChild(pk);
+    bars.push({lvl:lvl,pk:pk,v:0.2,peak:0.2,
+      p1:Math.random()*6.28,p2:Math.random()*6.28,
+      s1:0.6+Math.random()*0.5,s2:1.4+Math.random()*0.9,
+      base:0.30+Math.random()*0.26});
+  }
+  function set(b){
+    var t=b.v<0.02?0.02:(b.v>1?1:b.v);
+    b.lvl.setAttribute('y',yBot-t*mH);
+    b.lvl.setAttribute('height',Math.max(0.5,t*mH));
+    b.pk.setAttribute('y',yBot-b.peak*mH-3);
+  }
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){
+    bars.forEach(function(b){b.v=Math.max(0.08,Math.min(1,b.base+0.16*Math.sin(b.p1)));b.peak=Math.min(1,b.v+0.06);set(b);});
+    return;
+  }
+  function frame(now){
+    var tt=now/1000;
+    for(var i=0;i<bars.length;i++){
+      var b=bars[i];
+      var target=b.base+0.34*Math.sin(tt*b.s1+b.p1)+0.16*Math.sin(tt*b.s2+b.p2);
+      if(target<0.05)target=0.05; if(target>1)target=1;
+      b.v+= target>b.v ? (target-b.v)*0.35 : (target-b.v)*0.09;
+      b.peak = b.v>b.peak ? b.v : Math.max(b.v,b.peak-0.006);
+      set(b);
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
