@@ -1,6 +1,7 @@
 # decibel-one-software-development-group.github.io
 
-The **Decibel One** company landing page — served at the GitHub Pages **root** for the org.
+The **Decibel One** software landing page — served at the GitHub Pages **root** for the org.
+(When the Decibel One practice site is built, this moves to `/software`.)
 
 - **Live:** https://decibel-one-software-development-group.github.io/
 - **Source:** a single self-contained `index.html` (no build step), served from the `main` branch root.
@@ -8,8 +9,9 @@ The **Decibel One** company landing page — served at the GitHub Pages **root**
 ## Design
 
 Matches the Decibel One product pages (SiChronize, SiGENTEST): IBM Plex + Tabler icons,
-CSS-variable light/dark, fully self-contained. The hero is an animated dB level meter —
-the mark the company is named for — and the footer carries the real Decibel One logo.
+CSS-variable light/dark, fully self-contained. Streamlined layout — brand, a one-line
+pitch, two equal-height app blocks (each carrying the app's real Dock icon), and a footer
+with the Decibel One logo. Every graphic is a real mark; no decorative filler.
 
 ## Products featured
 
