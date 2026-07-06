@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Decibel One — software for production sound &amp; live events</title>
-<meta name="description" content="Decibel One builds focused, native macOS and Windows apps for production sound and live events — time sync for closed networks, audio test and generation, equipment documentation, rack drawing, and show scheduling. Each app does one job precisely, and better together.">
+<meta name="description" content="Decibel One builds focused, native apps for production sound and live events — SiChronize for network time sync on closed networks, and SiGENTEST for audio signal generation and testing on macOS.">
 <meta name="theme-color" content="#0e9f6e">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0c0e'/%3E%3Crect x='22' y='52' width='15' height='32' rx='3' fill='%2337AA00'/%3E%3Crect x='43' y='36' width='15' height='48' rx='3' fill='%23FFD400'/%3E%3Crect x='64' y='22' width='15' height='62' rx='3' fill='%23D51400'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Decibel One — software for production sound &amp; live events">
-<meta property="og:description" content="Focused, native macOS &amp; Windows apps for production sound and live events. Time sync for closed networks, audio test &amp; generation, equipment documentation, rack drawing, and scheduling.">
+<meta property="og:description" content="Focused, native apps for production sound and live events — network time sync for closed networks, and audio signal generation and testing on macOS.">
 <meta property="og:url" content="https://decibel-one-software-development-group.github.io/">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,6 +86,27 @@ footer{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--border);tex
 .foot-tag{color:var(--muted);margin-bottom:.35rem}
 html{scroll-behavior:smooth}
 .meter{width:100%;height:auto;display:block}
+/* one app per row */
+.apps{display:flex;flex-direction:column;gap:18px}
+.approw{display:flex;align-items:stretch;background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);color:inherit;transition:transform .15s,box-shadow .15s,border-color .15s}
+.approw:hover{transform:translateY(-2px);box-shadow:var(--shadow-h);border-color:var(--accent-border)}
+.approw.rev{flex-direction:row-reverse}
+.appvis{flex:0 0 288px;display:flex;align-items:center;justify-content:center;padding:34px;border-right:1px solid var(--border)}
+.approw.rev .appvis{border-right:none;border-left:1px solid var(--border)}
+.appvis.sich{background:rgba(14,159,110,.12)}
+.appvis.sigen{background:rgba(31,111,235,.12)}
+.appvis svg{width:88px;height:88px;filter:drop-shadow(0 4px 14px rgba(0,0,0,.14))}
+.appbody{flex:1;padding:26px 30px;display:flex;flex-direction:column;min-width:0}
+.apphead{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.approw h3{margin:0;font-size:22px;font-weight:600;letter-spacing:-.01em}
+.appbody .desc{margin:12px 0 0;font-size:15px;color:var(--muted);line-height:1.6;max-width:62ch}
+.subapp{margin:14px 0 0;display:flex;gap:10px;align-items:flex-start;background:var(--tint);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:13.5px;color:var(--muted);line-height:1.55;max-width:64ch}
+.subapp i{color:var(--accent);font-size:18px;margin-top:1px;flex:0 0 auto}
+.subapp strong{color:var(--text);font-weight:600}
+.approw .more{margin-top:auto;padding-top:18px;font-size:14px;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:6px}
+.approw .more i{font-size:16px;transition:transform .15s}
+.approw:hover .more i{transform:translateX(3px)}
+@media(max-width:640px){.approw,.approw.rev{flex-direction:column}.appvis,.approw.rev .appvis{flex-basis:auto;min-height:150px;border-right:none;border-left:none;border-bottom:1px solid var(--border)}}
 @media(max-width:560px){h1{font-size:29px}.hero{padding:1.5rem 0 1rem}}
 </style>
 </head>
@@ -124,7 +145,7 @@ html{scroll-behavior:smooth}
 
   <section class="hero">
     <h1>Purpose-built software for live production</h1>
-    <p class="lede">Decibel One makes focused, native apps for production sound and live events. Lock every machine on a closed network to one clock, test and generate audio, document your gear, draw your racks, and schedule the whole show — each app doing one thing precisely, and better together.</p>
+    <p class="lede">Decibel One makes focused, native apps for production sound and live events — lock every machine on a closed network to one clock, and generate and test audio with precision. Two tools, each doing one thing well.</p>
     <a class="dl" href="#suite">
       See the apps
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14m0 0l-6-6m6 6l6-6"/></svg>
@@ -146,48 +167,32 @@ html{scroll-behavior:smooth}
     </div>
   </div>
 
-  <h2 class="sec-title" id="suite">The Decibel One suite</h2>
-  <p class="sec-sub">Focused apps that stand on their own — and connect into one system when you run more than one.</p>
-  <div class="grid">
+  <h2 class="sec-title" id="suite">The apps</h2>
+  <p class="sec-sub">Two focused, native tools for production sound.</p>
+  <div class="apps">
 
-    <a class="card prod" href="https://decibel-one-software-development-group.github.io/sichronize-server/">
-      <div class="chead"><i class="ti ti-clock ic" aria-hidden="true"></i><span class="tag">Free · macOS</span></div>
-      <h2>SiChronize Server</h2>
-      <p>Turn one Mac into the NTP time source for a closed or air-gapped network, so every device agrees on the clock — no internet needed.</p>
-      <span class="more">Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+    <a class="approw" href="https://decibel-one-software-development-group.github.io/sichronize-server/">
+      <div class="appvis sich">
+        <svg viewBox="0 0 100 100" style="color:#0e9f6e" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="50" r="20"/><path d="M50 50V36M50 50l10 6"/><path d="M74 34a28 28 0 0 1 3 30" opacity=".85"/><path d="M26 66a28 28 0 0 1-3-30" opacity=".85"/></g></svg>
+      </div>
+      <div class="appbody">
+        <div class="apphead"><h3>SiChronize</h3><span class="tag">Free · macOS</span></div>
+        <p class="desc">Turn one Mac into the NTP time source for a closed or air-gapped network, so every device agrees on the clock — no internet required.</p>
+        <p class="subapp"><i class="ti ti-plug-connected" aria-hidden="true"></i><span>Includes <strong>SiChronize Connect</strong> — a one-click utility that points any Mac or Windows PC at the server, at boot and every 30 minutes.</span></p>
+        <span class="more">Learn more &amp; download <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+      </div>
     </a>
 
-    <a class="card prod" href="https://decibel-one-software-development-group.github.io/sichronize-server/#connect">
-      <div class="chead"><i class="ti ti-plug-connected ic" aria-hidden="true"></i><span class="tag">Free · Mac &amp; PC</span></div>
-      <h2>SiChronize Connect</h2>
-      <p>A one-time setup utility: run it once on any Mac or Windows PC and it keeps that machine locked to your time server, at boot and every 30 minutes.</p>
-      <span class="more">Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+    <a class="approw rev" href="https://decibel-one-software-development-group.github.io/sigentest/">
+      <div class="appvis sigen">
+        <svg viewBox="0 0 100 100" style="color:#1f6feb" aria-hidden="true"><path d="M18 62V38h22v24h22V38h22" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="appbody">
+        <div class="apphead"><h3>SiGENTEST</h3><span class="tag">macOS</span></div>
+        <p class="desc">Native signal generator and tester for macOS — tones, sweeps, and measurement to check out an audio system quickly and precisely.</p>
+        <span class="more">Learn more &amp; download <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+      </div>
     </a>
-
-    <a class="card prod" href="https://decibel-one-software-development-group.github.io/sigentest/">
-      <div class="chead"><i class="ti ti-wave-sine ic" aria-hidden="true"></i><span class="tag">macOS</span></div>
-      <h2>SiGENTEST</h2>
-      <p>Native audio test and signal generation for macOS — tones, sweeps, and measurement to check out a system quickly and precisely.</p>
-      <span class="more">Learn more <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
-    </a>
-
-    <div class="card prod soon">
-      <div class="chead"><i class="ti ti-database ic" aria-hidden="true"></i><span class="tag soon">Coming soon</span></div>
-      <h2>SiBase</h2>
-      <p>Production sound documentation and equipment management — the single source of truth for every piece of gear across your shows.</p>
-    </div>
-
-    <div class="card prod soon">
-      <div class="chead"><i class="ti ti-calendar-event ic" aria-hidden="true"></i><span class="tag soon">Coming soon</span></div>
-      <h2>SiCal</h2>
-      <p>Project scheduling built for live entertainment — plan crews, dates, and deliverables across every production in one calendar.</p>
-    </div>
-
-    <div class="card prod soon">
-      <div class="chead"><i class="ti ti-server-2 ic" aria-hidden="true"></i><span class="tag soon">Coming soon</span></div>
-      <h2>SiAOX</h2>
-      <p>Rack-elevation drawings wired straight to your equipment list — draw the rig, and it stays in step with what's actually in it.</p>
-    </div>
 
   </div>
 
@@ -196,7 +201,7 @@ html{scroll-behavior:smooth}
   <div class="why">
     <div class="why-i"><i class="ti ti-bolt" aria-hidden="true"></i><h3>Native &amp; fast</h3><p>Real macOS and Windows apps that feel at home on your system — no browser tabs, no heavy runtimes, just software that opens and works.</p></div>
     <div class="why-i"><i class="ti ti-wifi-off" aria-hidden="true"></i><h3>Built for the field</h3><p>Designed for closed and air-gapped networks and live environments, where the internet isn't a given and the show still has to go on.</p></div>
-    <div class="why-i"><i class="ti ti-affiliate" aria-hidden="true"></i><h3>Better together</h3><p>Each app does one job precisely. Run more than one and they connect — a shared login and one source of truth across the suite.</p></div>
+    <div class="why-i"><i class="ti ti-focus-2" aria-hidden="true"></i><h3>Focused, not bloated</h3><p>Each app does one job precisely — no clutter and nothing you don't need. Just the tool you came for.</p></div>
     <div class="why-i"><i class="ti ti-shield-check" aria-hidden="true"></i><h3>Signed &amp; current</h3><p>Signed, notarized, and auto-updating, so you always have the latest without hunting for a download.</p></div>
   </div>
 

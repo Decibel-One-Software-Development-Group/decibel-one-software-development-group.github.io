@@ -13,8 +13,10 @@ the mark the company is named for — and the footer carries the real Decibel On
 
 ## Products featured
 
-- **Live:** SiChronize Server, SiChronize Connect, SiGENTEST (cards link to each product page).
-- **Coming soon:** SiBase, SiCal, SiAOX.
+Two apps, listed one per row, each linking to its product page:
+
+- **SiChronize** — network time sync for closed networks (includes SiChronize Connect, the client-side sub-app).
+- **SiGENTEST** — audio signal generation and testing for macOS.
 
 ## Custom domain
 
