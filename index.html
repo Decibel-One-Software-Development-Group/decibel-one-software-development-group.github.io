@@ -153,20 +153,6 @@ html{scroll-behavior:smooth}
     <p class="cap">Native macOS &amp; Windows apps · signed, notarized &amp; auto-updating</p>
   </section>
 
-  <div class="win meterwin">
-    <div class="bar">
-      <span class="dot" style="background:#D51400"></span>
-      <span class="dot" style="background:#FFB020"></span>
-      <span class="dot" style="background:#37AA00"></span>
-      <span style="margin-left:8px;font-size:13px;color:var(--faint);font-family:'IBM Plex Mono',monospace">Decibel One · master</span>
-    </div>
-    <div class="body">
-      <!-- An animated dB level meter — the mark the company is named for. Pure
-           cosmetic decoration built by the script below; nothing leaves the page. -->
-      <svg id="meter" class="meter" viewBox="0 0 860 340" preserveAspectRatio="xMidYMid meet" role="img" aria-label="An animated audio level meter"></svg>
-    </div>
-  </div>
-
   <h2 class="sec-title" id="suite">The apps</h2>
   <p class="sec-sub">Two focused, native tools for production sound.</p>
   <div class="apps">
@@ -238,72 +224,5 @@ html{scroll-behavior:smooth}
   </footer>
 </main>
 
-<script>
-// Animated dB level meter — the mark the company is named for. Purely cosmetic.
-(function(){
-  var svg=document.getElementById('meter');
-  if(!svg) return;
-  var NS='http://www.w3.org/2000/svg';
-  var W=860,H=340,padL=66,padR=22,padT=30,padB=46;
-  var x0=padL,x1=W-padR,yTop=padT,yBot=H-padB,mH=yBot-yTop;
-  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
-
-  var defs=el('defs',{});
-  var grad=el('linearGradient',{id:'d1mg',gradientUnits:'userSpaceOnUse',x1:0,y1:yBot,x2:0,y2:yTop});
-  [['0','#2A8800'],['0.45','#37AA00'],['0.68','#FFD400'],['0.85','#FF8A00'],['1','#D51400']]
-    .forEach(function(s){grad.appendChild(el('stop',{offset:s[0],'stop-color':s[1]}));});
-  defs.appendChild(grad); svg.appendChild(defs);
-
-  svg.appendChild(el('rect',{x:8,y:8,width:W-16,height:H-16,rx:14,fill:'#0a0c0e',stroke:'rgba(255,255,255,.08)'}));
-
-  var ticks=[['0',1.0],['-6',0.80],['-12',0.63],['-20',0.46],['-40',0.20]];
-  ticks.forEach(function(t){
-    var y=yBot-t[1]*mH;
-    svg.appendChild(el('line',{x1:x0-6,y1:y,x2:x1,y2:y,stroke:'rgba(255,255,255,.10)','stroke-width':1}));
-    var tx=el('text',{x:x0-12,y:y+3.5,'text-anchor':'end','font-size':11,fill:'rgba(255,255,255,.34)','font-family':"'IBM Plex Mono',monospace"});
-    tx.textContent=t[0]; svg.appendChild(tx);
-  });
-  var cap=el('text',{x:x0-12,y:yTop-9,'text-anchor':'end','font-size':10,fill:'rgba(255,255,255,.30)','font-family':"'IBM Plex Mono',monospace",'letter-spacing':1});
-  cap.textContent='dB'; svg.appendChild(cap);
-
-  var N=18, gap=(x1-x0)/N, bw=gap*0.56, bars=[];
-  for(var i=0;i<N;i++){
-    var bx=x0+i*gap+(gap-bw)/2;
-    svg.appendChild(el('rect',{x:bx,y:yTop,width:bw,height:mH,rx:2,fill:'rgba(255,255,255,.05)'}));
-    var lvl=el('rect',{x:bx,y:yBot,width:bw,height:1,rx:2,fill:'url(#d1mg)'});
-    svg.appendChild(lvl);
-    var pk=el('rect',{x:bx,y:yBot-3,width:bw,height:3,rx:1.5,fill:'rgba(236,239,241,.9)'});
-    svg.appendChild(pk);
-    bars.push({lvl:lvl,pk:pk,v:0.2,peak:0.2,
-      p1:Math.random()*6.28,p2:Math.random()*6.28,
-      s1:0.6+Math.random()*0.5,s2:1.4+Math.random()*0.9,
-      base:0.30+Math.random()*0.26});
-  }
-  function set(b){
-    var t=b.v<0.02?0.02:(b.v>1?1:b.v);
-    b.lvl.setAttribute('y',yBot-t*mH);
-    b.lvl.setAttribute('height',Math.max(0.5,t*mH));
-    b.pk.setAttribute('y',yBot-b.peak*mH-3);
-  }
-  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(reduce){
-    bars.forEach(function(b){b.v=Math.max(0.08,Math.min(1,b.base+0.16*Math.sin(b.p1)));b.peak=Math.min(1,b.v+0.06);set(b);});
-    return;
-  }
-  function frame(now){
-    var tt=now/1000;
-    for(var i=0;i<bars.length;i++){
-      var b=bars[i];
-      var target=b.base+0.34*Math.sin(tt*b.s1+b.p1)+0.16*Math.sin(tt*b.s2+b.p2);
-      if(target<0.05)target=0.05; if(target>1)target=1;
-      b.v+= target>b.v ? (target-b.v)*0.35 : (target-b.v)*0.09;
-      b.peak = b.v>b.peak ? b.v : Math.max(b.v,b.peak-0.006);
-      set(b);
-    }
-    requestAnimationFrame(frame);
-  }
-  requestAnimationFrame(frame);
-})();
-</script>
 </body>
 </html>
