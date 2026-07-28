@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Decibel One — Mac apps that fill the gaps</title>
-<meta name="description" content="Decibel One Software builds Mac apps that fill the holes in the toolkit — SiChronize for network time sync on closed networks, and SiGENTEST for audio test signals and SMPTE LTC timecode.">
+<title>Decibel One — Production Audio &amp; Sound Design</title>
+<meta name="description" content="Decibel One is a production audio and sound design practice for live entertainment — designing, engineering, and delivering sound for Broadway, Las Vegas, and large-scale productions worldwide, with purpose-built software developed in-house.">
 <meta name="theme-color" content="#0e9f6e">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0c0e'/%3E%3Crect x='22' y='52' width='15' height='32' rx='3' fill='%2337AA00'/%3E%3Crect x='43' y='36' width='15' height='48' rx='3' fill='%23FFD400'/%3E%3Crect x='64' y='22' width='15' height='62' rx='3' fill='%23D51400'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Decibel One — Mac apps that fill the gaps">
-<meta property="og:description" content="Mac apps that fill the holes in the toolkit — SiChronize for network time sync, and SiGENTEST for audio test signals and SMPTE LTC timecode.">
-<meta property="og:url" content="https://decibel-one-software-development-group.github.io/">
+<meta property="og:title" content="Decibel One — Production Audio &amp; Sound Design">
+<meta property="og:description" content="A production audio and sound design practice for live entertainment — Broadway, Las Vegas, and large-scale productions worldwide.">
+<meta property="og:url" content="https://decibelone.com/">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,44 +36,73 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:'IBM Plex Sans'
 .wrap{max-width:1080px;margin:0 auto;padding:34px 24px 64px}
 a{color:var(--accent);text-decoration:none}
 p{margin:0}
+h2{margin:0;font-size:14px;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:var(--faint)}
 .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
-.brand{display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;color:inherit}
 .brandmark{height:44px;width:auto;display:block}
 .brand .name{font-size:18px;font-weight:600;line-height:1.15}
 .brand .sub{font-size:13px;color:var(--faint)}
 .pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;padding:5px 11px;border-radius:999px;background:var(--accent-bg);color:var(--accent)}
-.hero{text-align:center;padding:3rem 0 2.4rem}
-.hero .lede{max-width:1020px;margin:0 auto;font-size:clamp(18px,2.5vw,24px);line-height:1.55;font-weight:500;letter-spacing:-.01em;color:var(--text);text-wrap:pretty}
-/* two equal app blocks */
-.apps{display:grid;grid-template-columns:1fr;grid-auto-rows:1fr;gap:18px;margin-top:.5rem}
+
+.hero{padding:3.4rem 0 2.6rem;text-align:center}
+.hero h1{margin:0 0 18px;font-size:clamp(30px,5vw,52px);line-height:1.08;font-weight:600;letter-spacing:-.025em;text-wrap:balance}
+.hero .lede{max-width:66ch;margin:0 auto;font-size:clamp(16px,2vw,19px);line-height:1.6;color:var(--muted);text-wrap:pretty}
+
+.section{margin-top:3.2rem}
+.section .head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.section .head p{font-size:17px;font-weight:500;letter-spacing:-.01em;max-width:60ch}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px 26px 28px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.card .ico{width:38px;height:38px;border-radius:10px;background:var(--accent-bg);color:var(--accent);display:grid;place-items:center;font-size:20px;margin-bottom:16px}
+.card h3{margin:0 0 9px;font-size:19px;font-weight:600;letter-spacing:-.01em}
+.card p{font-size:15px;color:var(--muted);line-height:1.6}
+
+/* Products — same block language as the software page, so the two read as one site. */
+.apps{display:grid;grid-template-columns:1fr;grid-auto-rows:1fr;gap:18px}
 .approw{display:flex;align-items:stretch;background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);color:inherit;transition:transform .15s,box-shadow .15s,border-color .15s}
 .approw:hover{transform:translateY(-2px);box-shadow:var(--shadow-h);border-color:var(--accent-border)}
 .approw.rev{flex-direction:row-reverse}
-.appvis{position:relative;flex:0 0 300px;display:flex;align-items:center;justify-content:center;padding:36px;background:var(--tint);border-right:1px solid var(--border)}
+.appvis{position:relative;flex:0 0 260px;display:flex;align-items:center;justify-content:center;padding:32px;background:var(--tint);border-right:1px solid var(--border)}
 .approw.rev .appvis{border-right:none;border-left:1px solid var(--border)}
 .appvis::before{content:"";position:absolute;inset:0}
 .appvis.sich::before{background:radial-gradient(circle at 50% 42%,rgba(14,159,110,.20),transparent 62%)}
 .appvis.sigen::before{background:radial-gradient(circle at 50% 42%,rgba(31,111,235,.22),transparent 62%)}
-.appicon{position:relative;width:112px;height:112px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.22))}
-.appbody{flex:1;padding:30px 32px;display:flex;flex-direction:column;min-width:0}
+.appvis.sipay::before{background:radial-gradient(circle at 50% 42%,rgba(29,158,117,.22),transparent 62%)}
+.appicon{position:relative;width:96px;height:96px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.22))}
+.appbody{flex:1;padding:28px 30px;display:flex;flex-direction:column;min-width:0}
 .apphead{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.approw h3{margin:0;font-size:23px;font-weight:600;letter-spacing:-.01em}
+.approw h3{margin:0;font-size:22px;font-weight:600;letter-spacing:-.01em}
 .tag{font-size:11px;font-weight:500;padding:2px 9px;border-radius:999px;background:var(--accent-bg);color:var(--accent);white-space:nowrap}
-.appbody .desc{margin:13px 0 0;font-size:15px;color:var(--muted);line-height:1.6;max-width:58ch}
+.appbody .desc{margin:12px 0 0;font-size:15px;color:var(--muted);line-height:1.6;max-width:58ch}
 .approw .more{margin-top:auto;padding-top:18px;font-size:14px;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:6px}
 .approw .more i{font-size:16px;transition:transform .15s}
 .approw:hover .more i{transform:translateX(3px)}
+.approw.static{cursor:default}
+.approw.static:hover{transform:none;box-shadow:var(--shadow);border-color:var(--border)}
+
+.contact{margin-top:3.2rem;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:30px 32px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.contact .t{font-size:19px;font-weight:600;letter-spacing:-.01em;margin:0 0 5px}
+.contact .s{font-size:15px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;font-size:15px;font-weight:600;padding:11px 20px;border-radius:11px;white-space:nowrap}
+.btn:hover{background:var(--accent-h)}
+
 footer{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--border);text-align:center;font-size:13px;color:var(--faint)}
 .d1sig{display:inline-flex;align-items:center;gap:.55rem;margin-bottom:.55rem}
 .d1sig .d1name{font-weight:600;font-size:15px;color:var(--text);letter-spacing:.2px}
-@media(max-width:640px){.apps{grid-auto-rows:auto}.approw,.approw.rev{flex-direction:column}.appvis,.approw.rev .appvis{flex-basis:auto;min-height:180px;border-right:none;border-left:none;border-bottom:1px solid var(--border)}}
-@media(max-width:560px){.hero{padding:1.6rem 0 1.2rem}}
+.legal{margin-top:.5rem;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.legal a{color:var(--faint)}
+.legal a:hover{color:var(--accent)}
+
+@media(max-width:860px){.cards{grid-template-columns:1fr}}
+@media(max-width:640px){.apps{grid-auto-rows:auto}.approw,.approw.rev{flex-direction:column}.appvis,.approw.rev .appvis{flex-basis:auto;min-height:170px;border-right:none;border-left:none;border-bottom:1px solid var(--border)}.hero{padding:2rem 0 1.6rem}}
 </style>
 </head>
 <body>
 <main class="wrap">
+
   <div class="topbar">
-    <div class="brand">
+    <a class="brand" href="/">
       <svg class="brandmark" viewBox="0 0 428 819" role="img" aria-label="Decibel One">
         <defs><clipPath id="d1topone"><path d="M93,92 L191,92 L258,168 L258,748 L172,748 L172,170 L73,170 Z"/></clipPath></defs>
         <path fill="#000000" d="M12,6 L341,6 A80,80 0 0 1 421,86 L421,728 A82,82 0 0 1 339,810 L12,810 A6,6 0 0 1 6,804 L6,12 A6,6 0 0 1 12,6 Z"/>
@@ -84,46 +113,113 @@ footer{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--border);tex
           <rect x="58" y="436" width="212" height="29" fill="#2A8800"/><rect x="58" y="473" width="212" height="29" fill="#2A8800"/><rect x="58" y="510" width="212" height="29" fill="#2A8800"/><rect x="58" y="547" width="212" height="29" fill="#2A8800"/><rect x="58" y="584" width="212" height="29" fill="#2A8800"/><rect x="58" y="621" width="212" height="29" fill="#2A8800"/><rect x="58" y="658" width="212" height="29" fill="#2A8800"/><rect x="58" y="695" width="212" height="29" fill="#2A8800"/><rect x="58" y="732" width="212" height="29" fill="#2A8800"/>
         </g>
       </svg>
-      <span><span class="name">Decibel One</span><br><span class="sub">Software</span></span>
-    </div>
-    <span class="pill"><i class="ti ti-brand-apple" aria-hidden="true"></i> Native for macOS</span>
+      <span><span class="name">Decibel One</span><br><span class="sub">Production Audio &amp; Sound Design</span></span>
+    </a>
+    <span class="pill"><i class="ti ti-wave-sine" aria-hidden="true"></i> Live entertainment</span>
   </div>
 
   <section class="hero">
-    <p class="lede">Decibel One Software builds Mac apps that fill the holes in the toolkit.<br>Specialized tools for everyone.<br>Made and shared for anyone who needs them.</p>
+    <h1>Sound for the world&rsquo;s biggest stages.</h1>
+    <p class="lede">Decibel One is a production audio and sound design practice for live
+    entertainment — designing, engineering, and delivering sound for Broadway, Las Vegas,
+    and large-scale productions worldwide.</p>
   </section>
 
-  <div class="apps">
+  <section class="section">
+    <div class="head">
+      <h2>What we do</h2>
+      <p>One practice, from first concept to opening night.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="ico"><i class="ti ti-wave-saw-tool" aria-hidden="true"></i></div>
+        <h3>Sound design</h3>
+        <p>Shaping the sonic world of a production — concept, content, and the system
+        design behind it — from early workshops through previews and opening.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><i class="ti ti-adjustments-horizontal" aria-hidden="true"></i></div>
+        <h3>Production audio</h3>
+        <p>System design, engineering, and integration for large-scale rooms — turning a
+        design into a show that lands the same way, night after night.</p>
+      </div>
+      <div class="card">
+        <div class="ico"><i class="ti ti-code" aria-hidden="true"></i></div>
+        <h3>Technology</h3>
+        <p>Purpose-built software — network time sync, audio test, crew scheduling and
+        payroll — developed in-house to keep big productions running smoothly.</p>
+      </div>
+    </div>
+  </section>
 
-    <a class="approw" href="https://decibel-one-software-development-group.github.io/sichronize-server/">
-      <div class="appvis sich">
-        <svg class="appicon" viewBox="0 0 100 100" aria-hidden="true">
-          <rect width="100" height="100" rx="24" fill="#0e9f6e"/>
-          <g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="50" r="20"/><path d="M50 50V36M50 50l10 6"/><path d="M74 34a28 28 0 0 1 3 30" opacity=".9"/><path d="M26 66a28 28 0 0 1-3-30" opacity=".9"/></g>
-        </svg>
-      </div>
-      <div class="appbody">
-        <div class="apphead"><h3>SiChronize</h3><span class="tag">Free · macOS</span></div>
-        <p class="desc">Turn one Mac into the NTP time source for a closed or air-gapped network, so every device agrees on the clock — no internet required. Set it up once and it serves time quietly from the menu bar.</p>
-        <span class="more">Learn more &amp; download <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
-      </div>
-    </a>
+  <section class="section">
+    <div class="head">
+      <h2>Software</h2>
+      <p>Tools built for our own shows, shared with everyone else&rsquo;s.</p>
+    </div>
+    <div class="apps">
 
-    <a class="approw rev" href="https://decibel-one-software-development-group.github.io/sigentest/">
-      <div class="appvis sigen">
-        <svg class="appicon" viewBox="0 0 100 100" aria-hidden="true">
-          <rect width="100" height="100" rx="24" fill="#1f6feb"/>
-          <path d="M18 62V38h22v24h22V38h22" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+      <div class="approw static">
+        <div class="appvis sipay">
+          <svg class="appicon" viewBox="0 0 100 100" aria-hidden="true">
+            <rect width="100" height="100" rx="24" fill="#1d9e75"/>
+            <g fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M30 30h22a13 13 0 0 1 0 26H30V30zM30 56v18"/>
+              <path d="M64 68h10M69 63v10"/>
+            </g>
+          </svg>
+        </div>
+        <div class="appbody">
+          <div class="apphead"><h3>SiPay</h3><span class="tag">For production companies</span></div>
+          <p class="desc">Scheduling and payroll for live-event production companies —
+          building crew calls, collecting availability, and getting a show&rsquo;s payroll
+          to the processor without a spreadsheet in sight. Used by production companies
+          to book and pay their crew.</p>
+          <span class="more" style="color:var(--faint)">Available to production companies by arrangement</span>
+        </div>
       </div>
-      <div class="appbody">
-        <div class="apphead"><h3>SiGENTEST</h3><span class="tag">Free · macOS</span></div>
-        <p class="desc">Native macOS toolkit for audio test signals and SMPTE LTC timecode — generate tones, sweeps, and timecode, monitor a live LTC stream, and analyze recordings against the SMPTE standard. Precise, no-fuss, and ready the moment you open it.</p>
-        <span class="more">Learn more &amp; download <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
-      </div>
-    </a>
 
-  </div>
+      <a class="approw rev" href="/software/">
+        <div class="appvis sich">
+          <svg class="appicon" viewBox="0 0 100 100" aria-hidden="true">
+            <rect width="100" height="100" rx="24" fill="#0e9f6e"/>
+            <g fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="50" r="20"/><path d="M50 50V36M50 50l10 6"/><path d="M74 34a28 28 0 0 1 3 30" opacity=".9"/><path d="M26 66a28 28 0 0 1-3-30" opacity=".9"/></g>
+          </svg>
+        </div>
+        <div class="appbody">
+          <div class="apphead"><h3>SiChronize</h3><span class="tag">Free · macOS</span></div>
+          <p class="desc">Turn one Mac into the NTP time source for a closed or air-gapped
+          network, so every device agrees on the clock — no internet required.</p>
+          <span class="more">See the Mac apps <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+        </div>
+      </a>
+
+      <a class="approw" href="/software/">
+        <div class="appvis sigen">
+          <svg class="appicon" viewBox="0 0 100 100" aria-hidden="true">
+            <rect width="100" height="100" rx="24" fill="#1f6feb"/>
+            <path d="M18 62V38h22v24h22V38h22" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="appbody">
+          <div class="apphead"><h3>SiGENTEST</h3><span class="tag">Free · macOS</span></div>
+          <p class="desc">Audio test signals and SMPTE LTC timecode — generate tones,
+          sweeps and timecode, monitor a live LTC stream, and analyze recordings against
+          the standard.</p>
+          <span class="more">See the Mac apps <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="contact">
+    <div>
+      <p class="t">Get in touch</p>
+      <p class="s">Design, engineering, or the software — start a conversation.</p>
+    </div>
+    <a class="btn" href="mailto:simon@decibelone.com"><i class="ti ti-mail" aria-hidden="true"></i> simon@decibelone.com</a>
+  </section>
 
   <footer>
     <div class="d1sig">
@@ -139,8 +235,14 @@ footer{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--border);tex
       </svg>
       <span class="d1name">Decibel One</span>
     </div>
-    <div>© 2026 Decibel One</div>
+    <div>© 2026 Decibel One LLC</div>
+    <div class="legal">
+      <a href="/software/">Software</a>
+      <a href="https://sipay.decibelonesoftware.com/sms">SiPay messaging terms &amp; privacy</a>
+      <a href="mailto:simon@decibelone.com">Contact</a>
+    </div>
   </footer>
+
 </main>
 </body>
 </html>
