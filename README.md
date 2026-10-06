@@ -1,32 +1,29 @@
 # decibel-one-software-development-group.github.io
 
-The **Decibel One** software landing page — served at the GitHub Pages **root** for the org.
-(When the Decibel One practice site is built, this moves to `/software`.)
+The Decibel One website, served by GitHub Pages at https://decibelone.com (`CNAME`).
+No build step: a push to `main` publishes.
 
-- **Live:** https://decibel-one-software-development-group.github.io/
-- **Source:** a single self-contained `index.html` (no build step), served from the `main` branch root.
+- `index.html` — the front page.
+- `software/index.html` — the Mac apps page, https://decibelone.com/software/.
+- `software/icons/` — one 256 px icon per app, cut from the app's own icon so every
+  icon fills its square.
 
-## Design
+## The Mac apps page
 
-Matches the Decibel One product pages (SiChronize, SiGENTEST): IBM Plex + Tabler icons,
-CSS-variable light/dark, fully self-contained. Streamlined layout — brand, a one-line
-pitch, two equal-height app blocks (each carrying the app's real Dock icon), and a footer
-with the Decibel One logo. Every graphic is a real mark; no decorative filler.
+One card per app that has a public product page, in alphabetical order, each linking to
+`https://decibelone.com/<product>/`. A card carries the app's own icon, its name, a tag
+(what its product page says: "Free" where it says so, and the platforms) and one line,
+which is the product page's own headline. **SiBig and SiPan are left off on purpose**
+(Simon, 2026-10-05).
 
-## Products featured
+To add an app: put its icon in `software/icons/`, add its card in alphabetical order, and
+add its name to the two description meta tags at the top of the page.
 
-Two apps, listed one per row, each linking to its product page:
-
-- **SiChronize** — network time sync for closed networks (includes SiChronize Connect, the client-side sub-app).
-- **SiGENTEST** — audio signal generation and testing for macOS.
+Design: IBM Plex Sans and Tabler icons, CSS-variable light and dark. Every graphic is a
+real mark; no decorative filler.
 
 ## Custom domain
 
-When a domain is registered (e.g. `decibelone.com`):
-
-1. Add a `CNAME` file to this repo containing the bare domain.
-2. Point DNS at GitHub Pages (4 `A` records + a `www` `CNAME`).
-
-A custom domain set on the org site **automatically covers every project page too**
-(e.g. `decibelone.com/sichronize-server/`), and GitHub issues a free HTTPS certificate.
-The old `github.io` URLs keep working via redirect.
+The custom domain set on this org site covers every project page too
+(`decibelone.com/sichronize-server/`), with a GitHub-issued HTTPS certificate. The old
+`github.io` addresses redirect.
