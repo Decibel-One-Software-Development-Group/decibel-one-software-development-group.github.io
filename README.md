@@ -3,7 +3,8 @@
 The Decibel One website, served by GitHub Pages at https://decibelone.com (`CNAME`).
 No build step: a push to `main` publishes.
 
-- `index.html` — the front page.
+- `index.html` — the front page. Its software rows carry each app's family tile as inline SVG (the form
+  `suite-icons/gen.py` writes) and link to `decibelone.com/<product>/`.
 - `software/index.html` — the Mac apps page, https://decibelone.com/software/.
 - `software/icons/` — one 256 px icon per app, cut from the app's own icon so every
   icon fills its square.
