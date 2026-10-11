@@ -15,10 +15,15 @@ One card per app that has a public product page, in alphabetical order, each lin
 `https://decibelone.com/<product>/`. A card carries the app's own icon, its name, a tag
 (what its product page says: "Free" where it says so, and the platforms) and one line,
 which is the product page's own headline. **SiBig and SiPan are left off on purpose**
-(Simon, 2026-10-05).
+(Simon, 2026-10-05). **So is SiCache** (Simon, 2026-10-11): it has a product page at
+`decibelone.com/sicache/`, and this page does not list it.
 
 To add an app: put its icon in `software/icons/`, add its card in alphabetical order, and
 add its name to the two description meta tags at the top of the page.
+
+The cards sit three across (two on a narrow window, one on a phone). When the last row is
+short, its cards are centred (Simon, 2026-10-11): the grid is six half-columns and each card
+spans two, so the CSS needs no change when the number of apps changes.
 
 Design: IBM Plex Sans and Tabler icons, CSS-variable light and dark. Every graphic is a
 real mark; no decorative filler.

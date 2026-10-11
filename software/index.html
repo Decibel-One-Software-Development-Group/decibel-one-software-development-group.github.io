@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Decibel One — Mac apps that fill the gaps</title>
-<meta name="description" content="Mac apps from Decibel One: SiCache, SiCam Control, SiChronize, SiCTR, SiGENTEST, SiMONITOR, SiRPS, SiVIEW and SiVLAN.">
+<meta name="description" content="Mac apps from Decibel One: SiCam Control, SiChronize, SiCTR, SiGENTEST, SiMONITOR, SiRPS, SiVIEW and SiVLAN.">
 <meta name="theme-color" content="#0e9f6e">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0c0e'/%3E%3Crect x='22' y='52' width='15' height='32' rx='3' fill='%2337AA00'/%3E%3Crect x='43' y='36' width='15' height='48' rx='3' fill='%23FFD400'/%3E%3Crect x='64' y='22' width='15' height='62' rx='3' fill='%23D51400'/%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Decibel One — Mac apps that fill the gaps">
-<meta property="og:description" content="Mac apps from Decibel One: SiCache, SiCam Control, SiChronize, SiCTR, SiGENTEST, SiMONITOR, SiRPS, SiVIEW and SiVLAN.">
+<meta property="og:description" content="Mac apps from Decibel One: SiCam Control, SiChronize, SiCTR, SiGENTEST, SiMONITOR, SiRPS, SiVIEW and SiVLAN.">
 <meta property="og:url" content="https://decibelone.com/software/">
 <meta name="twitter:card" content="summary">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,6 +64,13 @@ footer .tm{margin-top:.35rem;font-size:12px}
 @media(max-width:900px){.apps{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.apps{grid-template-columns:1fr;grid-auto-rows:auto}}
 @media(max-width:560px){.hero{padding:1.6rem 0 1.2rem}}
+/* three across, a short last row sits centred: six half-columns, each card spans two */
+@media(min-width:901px){
+  .apps{grid-template-columns:repeat(6,1fr)}
+  .app{grid-column:span 2}
+  .app:nth-last-child(2):nth-child(3n+1){grid-column:2/span 2}
+  .app:last-child:nth-child(3n+1){grid-column:3/span 2}
+}
 </style>
 </head>
 <body>
@@ -90,15 +97,6 @@ footer .tm{margin-top:.35rem;font-size:12px}
   </section>
 
   <div class="apps">
-
-    <a class="app" href="https://decibelone.com/sicache/">
-      <div class="apphead">
-        <img class="appicon" src="icons/sicache.png" width="60" height="60" alt="">
-        <div class="appname"><h3>SiCache</h3><span class="tag">macOS</span></div>
-      </div>
-      <p class="desc">Offline cache and print host for SiBase and SiAOX.</p>
-      <span class="more">Learn more &amp; download <i class="ti ti-arrow-right" aria-hidden="true"></i></span>
-    </a>
 
     <a class="app" href="https://decibelone.com/sicam-control/">
       <div class="apphead">
