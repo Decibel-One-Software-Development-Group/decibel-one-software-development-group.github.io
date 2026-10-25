@@ -31,6 +31,8 @@ a:hover{color:var(--accent-h);text-decoration:underline}
 h1{margin:2.6rem 0 .4rem;font-size:clamp(30px,5vw,40px);font-weight:600;letter-spacing:-.02em;line-height:1.15}
 .updated{margin:0 0 2rem;font-size:13px;color:var(--faint)}
 .lede{margin:0 0 2rem;max-width:60ch;font-size:clamp(17px,2.2vw,20px);line-height:1.5;color:var(--muted)}
+.lede + .honor{margin:-.8rem 0 2rem}
+.honor{max-width:680px;padding:14px 18px;background:var(--tint);border:1px solid var(--border);border-radius:12px;font-size:16px;line-height:1.55}
 
 /* Long text reads in a narrower column than the page. */
 .prose{max-width:680px}
@@ -54,7 +56,17 @@ h1{margin:2.6rem 0 .4rem;font-size:clamp(30px,5vw,40px);font-weight:600;letter-s
 .prices td{padding:12px 10px;border-bottom:1px solid var(--border);vertical-align:top}
 .prices .num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
 .prices .app{font-weight:600}
+.prices .badge{display:inline-block;margin-left:8px;padding:1px 8px;border:1px solid var(--border);border-radius:999px;background:var(--tint);font-size:11px;font-weight:500;line-height:1.5;color:var(--muted);vertical-align:2px;white-space:nowrap}
+.prices th.num{width:9rem;white-space:normal}
+.nowrap{white-space:nowrap}
 .prices .what{display:block;font-size:14px;line-height:1.45;color:var(--muted)}
+/* The work in each app, as a level meter lit like the Decibel One mark: green, then yellow, then red. */
+.prices .effort{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin-top:6px;font-size:12.5px;color:var(--faint);font-variant-numeric:tabular-nums}
+.meter{display:inline-flex;gap:2px;flex:none;margin-bottom:3px}
+.meter i{display:block;width:6px;height:11px;border-radius:1.5px;background:var(--border)}
+.meter i.g{background:#37AA00}
+.meter i.y{background:#FFD400}
+.meter i.r{background:#D51400}
 .prices + .note{margin:.8rem 0 0;font-size:14px;color:var(--muted)}
 
 footer{margin-top:3.4rem;padding-top:1.4rem;border-top:1px solid var(--border);text-align:center;font-size:13px;color:var(--faint)}
@@ -63,4 +75,5 @@ footer .links a{color:var(--muted)}
 footer .links a:hover{color:var(--accent)}
 
 @media(max-width:720px){.tiers{grid-template-columns:1fr}}
+@media(max-width:600px){.prices th.num{width:4rem}.prices .badge{display:block;width:fit-content;margin:3px 0 4px}}
 @media(max-width:480px){.prices th,.prices td{padding-left:6px;padding-right:6px}}
