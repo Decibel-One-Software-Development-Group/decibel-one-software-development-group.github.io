@@ -4,9 +4,10 @@
 // Macs); the name rides along as Paddle custom data. When the purchase is paid, Paddle tells
 // Decibel One sign-in (DOI), which signs the license file and emails it.
 //
-// SANDBOX runs only on a local copy of the site. LIVE stays null until Paddle approves
-// decibelone.com, so the published page shows no buttons. A client-side token is public by
-// design; the price ids are Paddle's (scripts/paddle-catalog.py made them).
+// SANDBOX runs only on a local copy of the site. LIVE holds the live account's ids (made
+// 2026-10-25) but stays shut until LIVE_OPEN is true, so the published page shows no
+// buttons. A client-side token is public by design; the price ids are Paddle's
+// (scripts/paddle-catalog.py made them).
 (function () {
   "use strict";
 
@@ -24,10 +25,26 @@
       "sivlan": { pro: "pri_01m5rar7pqd2wbtrqaprwpk186", company: "pri_01m5rar7tybpe2qrsv8tqsxhe2" }
     }
   };
-  var LIVE = null;
+  var LIVE = {
+    env: "live",
+    token: "live_e1a4a63663cef91d226cfa1db3e",
+    prices: {
+      "sigentest": { pro: "pri_01m5srtbjm3cmq74vt39mgh0pw", company: "pri_01m5srtbnw62t8vz61hq2ft7xp" },
+      "sichronize": { pro: "pri_01m5srtc29gj2gqvjaty92hg9r", company: "pri_01m5srtc5qm6kgyqngktgeva69" },
+      "sictr": { pro: "pri_01m5srtcgnst3dhye7tg8bt77v", company: "pri_01m5srtckypz483a2qtwfgk8eg" },
+      "simonitor": { pro: "pri_01m5srtcz7rb848swxd2f878vb", company: "pri_01m5srtd2hn7akqjabcwhjecze" },
+      "sicam-control": { pro: "pri_01m5srtddh4rsex8p7yzaz48gx", company: "pri_01m5srtdgv50hbq3g71zv41dp4" },
+      "sirps": { pro: "pri_01m5srtdvw2xgxbemyzxnww6b6", company: "pri_01m5srtdz7bgvy9mmf65zer1zt" },
+      "siview": { pro: "pri_01m5srteawdk97hpprs2amvxd9", company: "pri_01m5srteepradkhrf2x0txj7cz" },
+      "sivlan": { pro: "pri_01m5srtetxqmym9tkfzzg1xqkg", company: "pri_01m5srteyd3bq5rq15tfzs81c9" }
+    }
+  };
+  // Off until DOI signs live licenses with the production key and Paddle has verified the
+  // account and approved decibelone.com; flip it in the same push that is meant to open checkout.
+  var LIVE_OPEN = false;
 
   var local = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
-  var config = local ? SANDBOX : LIVE;
+  var config = local ? SANDBOX : (LIVE_OPEN ? LIVE : null);
   if (!config) { return; }
 
   var dialog = document.getElementById("buy-dialog");
