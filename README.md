@@ -10,7 +10,7 @@ No build step: a push to `main` publishes.
   icon fills its square.
 - `pricing/`, `terms/`, `refunds/`, `privacy/` — what Paddle's site review asks for before
   checkout can open (Simon's rulings, 2026-10-24: Paddle as the seller; each app priced on its
-  own, SiGENTEST and SiChronize $49 Pro / $149 per Mac, the others $19 / $59; refunds within 30
+  own, SiGENTEST, SiChronize and SiCTR $49 Pro / $149 per Mac, the others $19 / $59; refunds within 30
   days; a Company license covers one Mac). They share `pages.css`. Paddle rejects a site whose
   Terms lose the Merchant of Record sentence, whose refund window drops under 14 days, or that
   says "all sales final". Every page's footer links all four. Text marked `class="owed"` is a gap
