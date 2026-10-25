@@ -29,8 +29,8 @@ No build step: a push to `main` publishes.
 
 One card per app that has a public product page, in alphabetical order, each linking to
 `https://decibelone.com/<product>/`. A card carries the app's own icon, its name, a tag
-(what its product page says: "Free" where it says so, and the platforms) and one line,
-which is the product page's own headline. **SiBig and SiPan are left off on purpose**
+(the platforms its product page names; "Free" came off with the free/paid wording, Simon,
+2026-10-25) and one line, which is the product page's own headline. **SiBig and SiPan are left off on purpose**
 (Simon, 2026-10-05). **So is SiCache** (Simon, 2026-10-11): it has a product page at
 `decibelone.com/sicache/`, and this page does not list it.
 
