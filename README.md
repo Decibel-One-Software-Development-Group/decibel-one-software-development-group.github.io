@@ -15,6 +15,13 @@ No build step: a push to `main` publishes.
   Terms lose the Merchant of Record sentence, whose refund window drops under 14 days, or that
   says "all sales final". Every page's footer links all four. Text marked `class="owed"` is a gap
   Simon still has to fill: nothing so marked may be pushed.
+- `checkout.js` — the Buy buttons on /pricing/ (Paddle's overlay checkout; a small form first asks the name to
+  show as "Licensed to" and, for Company, how many Macs). **Sandbox runs only on a local copy** (localhost,
+  127.0.0.1); `LIVE` stays `null` until Paddle approves decibelone.com, so the published page shows no buttons
+  and never loads Paddle's script (proven by loading the page under another host name: all 16 stay hidden).
+  Going live: put the live client-side token and the live price ids (`scripts/paddle-catalog.py --live`
+  writes them) in `LIVE`. Paddle needs a default payment link set before any checkout opens (sandbox:
+  `http://localhost:8790/pricing/`; live: `https://decibelone.com/pricing/`, approved with the site).
 
 ## The Mac apps page
 
